@@ -1,4 +1,4 @@
-# Project Title
+# Data Structures and Algorithms in C++
 
 ## Table of Contents
 
