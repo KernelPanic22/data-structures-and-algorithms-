@@ -98,10 +98,12 @@ int sumArray(int array[], int size)
     return sum;
 }
 
+//this function is used to print an array
 void print(int number)
 {
     cout << number << endl;
 }
+
 
 void print(int array[], int size)
 {

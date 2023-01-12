@@ -53,3 +53,7 @@ long FibonacciProgression::nextValue()
     cur += temp;
     return cur;
 }
+
+FibonacciProgression::~FibonacciProgression()
+{
+}
