@@ -8,7 +8,7 @@ class Person
 {
 public:
     Person(string name, int age);
-    void print();
+    virtual void print();
     ~Person();
     Person(const Person &p);
     Person &operator=(const Person &p);
@@ -56,11 +56,12 @@ public:
     Student(string name, int age, string major);
     string getMajor() { return major; }
     int getGraduationYear() { return graduationYear; }
-    void print();
+    virtual void print();
     ~Student();
     Student(const Student &s);
     Student &operator=(const Student &s);
-    void changeMajor(const string& newMajor);
+    void changeMajor(const string &newMajor);
+
 private:
     string major;
     int graduationYear;
@@ -83,13 +84,13 @@ Student::~Student()
 {
 }
 
-Student::Student(const Student& s) : Person(s)
+Student::Student(const Student &s) : Person(s)
 {
     this->major = s.major;
     this->graduationYear = s.graduationYear;
 }
 
-Student &Student::operator=(const Student& s)
+Student &Student::operator=(const Student &s)
 {
     Person::operator=(s);
     this->major = s.major;
@@ -97,7 +98,7 @@ Student &Student::operator=(const Student& s)
     return *this;
 }
 
-void Student::changeMajor(const string& newMajor)
+void Student::changeMajor(const string &newMajor)
 {
     this->major = newMajor;
 }
@@ -108,5 +109,16 @@ int main()
     s.print();
     s.changeMajor("Math");
     s.print();
+
+    // array of students
+    Person* pp[2];
+    pp[0] = new Person("John", 20);
+    pp[1] = new Student("Mary", 21, "Math");
+    
+    //dynamic cast to student from pp
+    Student* student = dynamic_cast<Student*>(pp[1]);
+    student->changeMajor("Computer Science");
+
+
     return 0;
 }
